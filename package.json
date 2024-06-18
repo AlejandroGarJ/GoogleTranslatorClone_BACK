@@ -1,0 +1,41 @@
+{
+  "name": "traductionscrapping",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.mjs",
+    "translate": "nodemon jsDOM.mjs",
+    "getLanguages": "node saveLanguageList.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alejandro García Jiménez",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@babel/cli": "^7.24.5",
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "@topcli/spinner": "^2.1.2",
+    "axios": "^1.7.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "cheerio": "^1.0.0-rc.12",
+    "cli-spinners": "^3.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsdom": "^24.0.0",
+    "ngrx": "^0.0.1-security",
+    "nodemon": "^3.1.0",
+    "puppeteer": "^22.9.0",
+    "rxjs": "^7.8.1",
+    "semistandard": "^17.0.0"
+  },
+  "eslintConfig": {
+    "extends": "semistandard",
+    "rules": {
+      "space-before-function-paren": "off"
+    }
+  },
+  "devDependencies": {
+    "mocha": "^10.4.0"
+  }
+}
