@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.mjs",
+    "postinstall": "npx puppeteer install",
     "translate": "nodemon jsDOM.mjs",
     "getLanguages": "node saveLanguageList.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
