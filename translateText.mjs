@@ -1,8 +1,14 @@
 /* eslint-disable no-unused-vars */
 import puppeteer from 'puppeteer';
-
+import { config as dotenvConfig } from 'dotenv';
+dotenvConfig({ path: './.env' });
 export async function getTranslation(inputLanguage, textToTranslate, language) {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({
+    headless: true,
+    executablePath: process.env.NODE_ENV === 'production'
+      ? process.env.PUPPETEER_EXECUTABLE_PATH
+      : puppeteer.executablePath()
+  });
   const page = await browser.newPage();
 
   textToTranslate = textToTranslate.replace(/ /g, '+') + '&op';
