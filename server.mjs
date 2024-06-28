@@ -3,7 +3,9 @@ import bodyParser from 'body-parser';
 import { getTranslation } from './translateText.mjs';
 import fs from 'fs';
 import cors from 'cors';
-const PORT = process.env.PORT ?? 57992;
+import dotenv from 'dotenv';
+dotenv.config();
+const PORT = process.env.PORT;
 
 const app = express();
 
