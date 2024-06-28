@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { getTranslation } from './translateText.mjs';
 import fs from 'fs';
-import cors from 'cors';
+
 import dotenv from 'dotenv';
 dotenv.config();
 const PORT = process.env.PORT;
@@ -13,12 +13,11 @@ const app = express();
 app.use(bodyParser.json());
 app.disable('x-powered-by');
 
-app.use(cors({ origin: 'http://localhost:4200' }));
 app.use(express.static('./'));
 
 app.post('/translate', async (req, res) => {
   // Leer el contenido del archivo HTML
-  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+
   try {
     const { inputLanguage, inputText, language } = req.body;
 
@@ -31,7 +30,7 @@ app.post('/translate', async (req, res) => {
 
 app.get('/languageList', async (req, res) => {
   // Leer el contenido del archivo HTML
-  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+
   try {
     const response = await fs.readFileSync('./languages.json', 'utf8');
     res.json(JSON.parse(response));
