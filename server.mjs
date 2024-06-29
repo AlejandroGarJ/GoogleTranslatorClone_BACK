@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { getTranslation } from './translateText.mjs';
 import fs from 'fs';
+import cors from 'cors';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -12,6 +13,7 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 app.disable('x-powered-by');
+app.use(cors());
 
 app.use(express.static('./'));
 
