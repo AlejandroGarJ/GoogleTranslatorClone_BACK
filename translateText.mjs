@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import puppeteer from 'puppeteer';
 import { config as dotenvConfig } from 'dotenv';
+import { timeout } from 'puppeteer';
 dotenvConfig({ path: './.env' });
 export async function getTranslation(inputLanguage, textToTranslate, language) {
   const browser = await puppeteer.launch({
@@ -13,7 +14,7 @@ export async function getTranslation(inputLanguage, textToTranslate, language) {
 
   textToTranslate = textToTranslate.replace(/ /g, '+') + '&op';
 
-  await page.goto(`https://translate.google.com/?hl=es&sl=${inputLanguage}&tl=${language}&text=${textToTranslate}=translate`);
+  await page.goto(`https://translate.google.com/?hl=es&sl=${inputLanguage}&tl=${language}&text=${textToTranslate}=translate`,  { waitUntil: 'networkidle0', timeout: 100000 });
 
   await page.waitForSelector('.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-dgl2Hf.nCP5yc.AjY5Oe.DuMIQc.LQeN7.XWZjwc');
   await page.click('.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-dgl2Hf.nCP5yc.AjY5Oe.DuMIQc.LQeN7.XWZjwc');
