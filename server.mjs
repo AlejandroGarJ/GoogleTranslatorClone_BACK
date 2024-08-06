@@ -26,7 +26,7 @@ app.post('/translate', async (req, res) => {
     const response = await getTranslation(inputLanguage, inputText, language);
     res.json(response);
   } catch (error) {
-    res.status(500).send('Ocurrió un error procesando la solicitud');
+    res.status(500).send('Ocurrió un error procesando la solicitud' + error);
   }
 });
 

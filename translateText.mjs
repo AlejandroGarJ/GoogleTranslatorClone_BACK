@@ -53,5 +53,4 @@ export async function getLanguages() {
   }
   return output;
 }
-console.log('Hola');
 getLanguages();
